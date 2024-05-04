@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useUploadThing } from "../utils/uploadthing";
 import { ArrowUpOnSquareStackIcon } from "@heroicons/react/24/outline";
+import { toast } from "sonner";
 
 // inferred input off useUploadThing
 type Input = Parameters<typeof useUploadThing>;
@@ -33,7 +34,17 @@ const useUploadThingInputProps = (...args: Input) => {
 export function SimpleUploadButton() {
    const router = useRouter();
    const { inputProps } = useUploadThingInputProps("iconUploader", {
+      onUploadBegin() {
+         toast("Uploading...", {
+            duration: 10000,
+            id: "upload-begin",
+         });
+      },
       onClientUploadComplete: () => {
+         toast.dismiss("upload-begin");
+         toast("Upload complete", {
+            duration: 4000,
+         });
          router.refresh();
       },
    });

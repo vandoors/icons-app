@@ -11,7 +11,7 @@ export default async function HomePage() {
    return (
       <div className="flex flex-wrap justify-center gap-4 px-2 py-4">
          {icons.map((icon) => (
-            <div key={icon.url} className="w-48">
+            <div key={icon.url} className="w-48 overflow-hidden">
                <Link href={`/icon/${icon.id}`}>
                   <Image
                      src={icon.url}
@@ -21,7 +21,7 @@ export default async function HomePage() {
                      alt={icon.name}
                   />
                </Link>
-               <div>{icon.name}</div>
+               <div className="text-clip">{icon.name}</div>
             </div>
          ))}
       </div>
