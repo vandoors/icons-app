@@ -1,4 +1,5 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
+import DownloadButton from "~/app/_components/download-link";
 import { deleteIcon, getIcon } from "~/server/queries";
 
 export default async function FullPageIconView(props: { id: number }) {
@@ -31,6 +32,7 @@ export default async function FullPageIconView(props: { id: number }) {
                      </button>
                   )}
                </form>
+               <DownloadButton url={icon.url} />
             </div>
          </div>
       </div>
