@@ -38,11 +38,13 @@ export default function RootLayout({
                 */
                routerConfig={extractRouterConfig(ourFileRouter)}
             />
-            <body
-               className={`font-sans ${inter.variable} flex flex-col gap-4 bg-orange-50`}
-            >
-               <TopNav />
-               {children}
+            <body className={`font-sans ${inter.variable} bg-orange-50`}>
+               <div className="grid h-screen grid-rows-[auto,1fr]">
+                  <header>
+                     <TopNav />
+                  </header>
+                  <main className="overflow-y-scroll">{children}</main>
+               </div>
                {modal}
                <div id="modal-root" />
             </body>

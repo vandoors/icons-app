@@ -9,9 +9,9 @@ export default async function HomePage() {
    const icons = await getIcons();
 
    return (
-      <main>
-         <div className="flex flex-wrap justify-center gap-4">
-            {icons.map((icon) => (
+      <div className="flex flex-wrap justify-center gap-4 px-2 py-4">
+         {[...icons, ...icons, ...icons, ...icons, ...icons, ...icons].map(
+            (icon) => (
                <div key={icon.url} className="w-48">
                   <Link href={`/icon/${icon.id}`}>
                      <Image
@@ -24,8 +24,8 @@ export default async function HomePage() {
                   </Link>
                   <div>{icon.name}</div>
                </div>
-            ))}
-         </div>
-      </main>
+            ),
+         )}
+      </div>
    );
 }
