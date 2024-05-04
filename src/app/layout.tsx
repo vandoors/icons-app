@@ -13,10 +13,24 @@ export const metadata = {
    icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
+function TopNav() {
+   return (
+      <nav className="flex w-full items-center justify-between p-4 text-xl font-bold">
+         <div>icons-app</div>
+         <div>sign in</div>
+      </nav>
+   );
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
    return (
       <html lang="en">
-         <body className={`font-sans ${inter.variable}`}>{children}</body>
+         <body
+            className={`font-sans ${inter.variable} flex flex-col gap-4 bg-orange-50`}
+         >
+            <TopNav />
+            {children}
+         </body>
       </html>
    );
 }
