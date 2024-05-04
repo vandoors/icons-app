@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { db } from "~/server/db";
+import { getIcons } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-   const icons = await db.query.icons.findMany({
-      orderBy: (model, { desc }) => desc(model.createdAt),
-   });
+   const icons = await getIcons();
 
    return (
       <main>
