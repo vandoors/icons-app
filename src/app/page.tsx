@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { db } from "~/server/db";
 import { getIcons } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
@@ -21,7 +20,6 @@ export default async function HomePage() {
                      alt={icon.name}
                   />
                </Link>
-               <div className="text-clip">{icon.name}</div>
             </div>
          ))}
       </div>

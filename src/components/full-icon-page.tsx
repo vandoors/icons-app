@@ -17,9 +17,10 @@ export default async function FullPageIconView(props: { id: number }) {
             />
          </div>
          <div className="flex w-48 flex-shrink-0 flex-col justify-center">
-            <span className="text-xl font-bold">{icon.name}</span>
+            <span className="text-xl font-bold">{icon.name.split(".")[0]}</span>
             <span className="text-sm">Uploaded by {uploaderInfo.fullName}</span>
-            <div className="pt-6">
+            <div className="flex gap-4 pt-6">
+               <DownloadButton url={icon.url} />
                <form
                   action={async () => {
                      "use server";
@@ -32,7 +33,6 @@ export default async function FullPageIconView(props: { id: number }) {
                      </button>
                   )}
                </form>
-               <DownloadButton url={icon.url} />
             </div>
          </div>
       </div>
