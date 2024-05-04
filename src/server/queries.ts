@@ -1,6 +1,9 @@
 import "server-only";
 import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
+import { icons } from "./db/schema";
+import { and, eq } from "drizzle-orm";
+import { redirect } from "next/navigation";
 
 export async function getIcons() {
    const icons = await db.query.icons.findMany({
@@ -30,4 +33,15 @@ export async function getIcon(id: number) {
    if (!icon) throw new Error("Icon not found");
 
    return icon;
+}
+
+export async function deleteIcon(id: number) {
+   const user = auth();
+   if (!user.userId) throw new Error("Unauthorized");
+
+   await db
+      .delete(icons)
+      .where(and(eq(icons.id, id), eq(icons.userId, user.userId)));
+
+   redirect("/");
 }
