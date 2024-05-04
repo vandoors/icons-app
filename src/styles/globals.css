@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 dialog {
-   @apply max-w-[100vw] max-h-[100vh] overflow-hidden;
+   @apply max-w-[100vw] max-h-[100vh];
 }
