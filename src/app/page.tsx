@@ -11,8 +11,8 @@ export default async function HomePage() {
    return (
       <main>
          <div className="flex flex-wrap gap-4">
-            {icons.map((image, index) => (
-               <div key={image.id + "-" + index} className="w-48">
+            {icons.map((image) => (
+               <div key={image.url} className="w-48">
                   <img src={image.url} />
                   <div>{image.name}</div>
                </div>
