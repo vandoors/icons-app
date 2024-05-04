@@ -19,7 +19,13 @@ export const metadata = {
    icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+   children,
+   modal,
+}: {
+   children: React.ReactNode;
+   modal: React.ReactNode;
+}) {
    return (
       <ClerkProvider>
          <html lang="en">
@@ -37,6 +43,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             >
                <TopNav />
                {children}
+               {modal}
+               <div id="modal-root" />
             </body>
          </html>
       </ClerkProvider>

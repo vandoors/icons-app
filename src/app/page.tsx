@@ -11,16 +11,18 @@ export default async function HomePage() {
    return (
       <main>
          <div className="flex flex-wrap justify-center gap-4">
-            {icons.map((image) => (
-               <div key={image.url} className="w-48">
-                  <Image
-                     src={image.url}
-                     style={{ objectFit: "contain" }}
-                     width={1024}
-                     height={1024}
-                     alt={image.name}
-                  />
-                  <div>{image.name}</div>
+            {icons.map((icon) => (
+               <div key={icon.url} className="w-48">
+                  <Link href={`/icon/${icon.id}`}>
+                     <Image
+                        src={icon.url}
+                        style={{ objectFit: "contain" }}
+                        width={1024}
+                        height={1024}
+                        alt={icon.name}
+                     />
+                  </Link>
+                  <div>{icon.name}</div>
                </div>
             ))}
          </div>

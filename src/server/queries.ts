@@ -21,3 +21,13 @@ export async function getMyIcons() {
 
    return icons;
 }
+
+export async function getIcon(id: number) {
+   const icon = await db.query.icons.findFirst({
+      where: (model, { eq }) => eq(model.id, id),
+   });
+
+   if (!icon) throw new Error("Icon not found");
+
+   return icon;
+}
